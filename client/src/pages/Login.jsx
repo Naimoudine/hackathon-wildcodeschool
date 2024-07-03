@@ -6,7 +6,7 @@ import {
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../styles/login.css";
+import styles from "./login.module.css";
 
 const PASSWORD_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -45,31 +45,32 @@ function Login() {
   }, [email, pwd]);
 
   return (
-    <main className="flex flex-col relative items-center justify-center lg:flex-row h-screen bg-black">
-      <FontAwesomeIcon
-        className="h-6 mr-4 cursor-pointer text-primary"
-        icon={faArrowLeft}
-      />{" "}
-      <section className="h-full w-full md:mt-4 lg:w-[45%] min-h-[400px] flex flex-col justify-center items-center p-4 px-8 md:px-16 lg:pl-16 bg-black">
+    <main className={styles.loginMain}>
+      <FontAwesomeIcon icon={faArrowLeft} />{" "}
+      <section className={styles.loginSection}>
         <p
           ref={errRef}
-          className={email && (!validEmail || !validPwd) ? "errmsg" : "hide"}
+          className={
+            email && (!validEmail || !validPwd) ? styles.errmsg : styles.hide
+          }
         >
           {errMsg}
         </p>
-        <form>
+        <form className={styles.formLogin}>
           <div>
             <label htmlFor="email">
               Email
-              <span className={validEmail ? "valid" : "hide"}>
+              <span className={validEmail ? styles.valid : styles.hide}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validEmail || !email ? "hide" : "invalid"}>
+              <span
+                className={validEmail || !email ? styles.hide : styles.invalid}
+              >
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
-              className="formInput"
+              className={styles.formInput}
               type="email"
               id="email"
               autoComplete="off"
@@ -81,7 +82,9 @@ function Login() {
             />
             <p
               className={
-                emailFocus && email && !validEmail ? "instructions" : "hide"
+                emailFocus && email && !validEmail
+                  ? styles.instructions
+                  : styles.hide
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -92,15 +95,15 @@ function Login() {
           <div>
             <label htmlFor="password">
               Code de sécurité
-              <span className={validPwd ? "valid" : "hide"}>
+              <span className={validPwd ? styles.valid : styles.hide}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validPwd || !pwd ? "hide" : "invalid"}>
+              <span className={validPwd || !pwd ? styles.hide : styles.invalid}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
-              className="formInput"
+              className={styles.formInput}
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
@@ -108,7 +111,11 @@ function Login() {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
-            <p className={pwdFocus && !validPwd ? "instructions" : "hide"}>
+            <p
+              className={
+                pwdFocus && !validPwd ? styles.instructions : styles.hide
+              }
+            >
               <FontAwesomeIcon icon={faInfoCircle} />
               8 à 24 caractères. <br />
               Merci de renseigner le code de sécurité qui vous a été transmis
@@ -116,7 +123,11 @@ function Login() {
               Caractères autorisés: <span>! @ # $ %</span>
             </p>
           </div>
-          <button type="submit" disabled={!validEmail || !validPwd}>
+          <button
+            className={styles.loginSubmitButton}
+            type="submit"
+            disabled={!validEmail || !validPwd}
+          >
             Login
           </button>
         </form>

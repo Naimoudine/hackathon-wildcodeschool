@@ -1,34 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  color: #fff;
-}
-
-body {
-  min-height: 100vh;
-  background: black;
-
-  background-position-x: right;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
-}
-
-section {
+.loginSection {
   width: 100%;
   max-width: 420px;
   min-height: 400px;
@@ -39,7 +9,7 @@ section {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-form {
+.formLogin {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -47,15 +17,14 @@ form {
   padding-bottom: 1rem;
 }
 
-a,
+/* a,
 a:visited {
   color: #fff;
-}
+} */
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
-button,
 textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
@@ -65,11 +34,11 @@ textarea {
 }
 
 label,
-button {
+.loginSubmitButton {
   margin-top: 1rem;
 }
 
-button {
+.loginSubmitButton {
   padding: 0.5rem;
   background-color: #00a3ff;
 }
@@ -112,12 +81,4 @@ button {
 
 .line {
   display: inline-block;
-}
-
-.image-container {
-  background: url("https://cdn.pixabay.com/photo/2017/01/29/14/59/sport-2018189_1280.jpg")
-    no-repeat center center;
-  background-size: cover;
-  position: relative;
-  clip-path: polygon(30% 0%, 100% 0, 100% 100%, 0% 100%);
 }

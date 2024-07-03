@@ -1,0 +1,38 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  color: black;
+}
+
+.dashboard aside {
+  width: 15%;
+  background-color: purple;
+}
+
+.dashboard nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.dashboard nav > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard ul {
+  list-style: none;
+}
+
+.dashboard a {
+  color: black;
+  text-decoration: none;
+}
+
+.dashboard > div {
+  width: 85%;
+  padding: 1rem;
+}
