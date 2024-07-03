@@ -7,9 +7,12 @@ const router = express.Router();
 /* ************************************************************************* */
 
 const itemsRouter = require("./items/router");
+const usersRouter = require("./users/router");
+const eventsRouter = require("./events/router");
 
 router.use("/items", itemsRouter);
-
+router.use("/users", usersRouter);
+router.use("/events", eventsRouter);
 /* ************************************************************************* */
 
 module.exports = router;
