@@ -1,0 +1,49 @@
+.mainHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.homeLogo {
+  width: 150px;
+}
+
+.middleSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(38, 35, 35);
+}
+
+h1 .homeSpan {
+  font-weight: bolder;
+  color: #d44511;
+}
+
+h1 .homeSpanTwo {
+  color: #5c0099;
+}
+
+.homeButton {
+  height: max-content;
+  background-color: #5c0099;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: 900;
+  margin-left: 100px;
+  padding: 25px;
+}
+
+.homeNavlink {
+  color: white;
+  text-decoration: none;
+}
+
+.bgImg {
+  width: 80%;
+  height: 400px;
+  background: url("../assets/images/home-img.jpg") center/cover;
+}
