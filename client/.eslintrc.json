@@ -17,6 +17,7 @@
   "plugins": ["react-refresh"],
   "rules": {
     "no-console": ["error", { "allow": ["error", "info", "warn"] }],
+    "no-unneeded-ternary": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-unescaped-entities": "off",

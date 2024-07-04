@@ -56,11 +56,10 @@ const add = async (req, res, next) => {
 
 const editValidate = async (req, res, next) => {
   const { id } = req.params;
-
   try {
-    const [event] = await tables.event.update(id, req.body.isValidated);
-    if (event.affectedRows > 0) {
-      res.status(204);
+    const result = await tables.event.update(id, req.body.isValidated);
+    if (result.affectedRows > 0) {
+      res.sendStatus(204);
     } else {
       res.sendStatus(404);
     }

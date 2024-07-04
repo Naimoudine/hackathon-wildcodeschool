@@ -1,34 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  color: #fff;
-}
-
-body {
-  min-height: 100vh;
-  background: black;
-
-  background-position-x: right;
-}
-
-.App {
+.loginMain {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
+  justify-content: center;
 }
 
-section {
+.loginSection {
   width: 100%;
   max-width: 420px;
   min-height: 400px;
@@ -36,10 +12,9 @@ section {
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
-form {
+.formLogin {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -47,39 +22,52 @@ form {
   padding-bottom: 1rem;
 }
 
-a,
+.formLogin > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* a,
 a:visited {
   color: #fff;
-}
+} */
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
-button,
 textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
-  border: none;
+  border: 1px solid purple;
+  border-radius: 0.5rem;
   outline: none;
 }
 
+.formLogin label {
+  color: purple;
+  margin-bottom: 0.25rem;
+}
+
 label,
-button {
+.loginSubmitButton {
   margin-top: 1rem;
 }
 
-button {
+.loginSubmitButton {
   padding: 0.5rem;
-  background-color: #00a3ff;
+  background-color: purple;
+  color: white;
+  font-size: 0.825rem;
+  border-radius: 0.5rem;
 }
 
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
-  background: #000;
+  background: purple;
   color: #fff;
-  padding: 0.25rem;
+  padding: 0.5rem;
   position: relative;
   bottom: -10px;
 }
@@ -112,12 +100,4 @@ button {
 
 .line {
   display: inline-block;
-}
-
-.image-container {
-  background: url("https://cdn.pixabay.com/photo/2017/01/29/14/59/sport-2018189_1280.jpg")
-    no-repeat center center;
-  background-size: cover;
-  position: relative;
-  clip-path: polygon(30% 0%, 100% 0, 100% 100%, 0% 100%);
 }
