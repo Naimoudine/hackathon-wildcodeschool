@@ -37,23 +37,28 @@ export default function Card({
       {status !== "pending" ? (
         <div className={styles.card}>
           <div>
+            <div className={styles.cardImg} />
             <p className={styles.cardTitle}>{title}</p>
             <p className={styles.cardDesc}>{description}</p>
           </div>
           <button type="button" className={styles.cardBtn}>
-            Détails
+            Details
           </button>
         </div>
       ) : (
         <div className={styles.card}>
           <div>
-            <p className={styles.cardTitle}>{title}</p>
-            <p className={styles.cardDesc}>{description}</p>
+            <div className={styles.cardImg} />
+            <div>
+              <p className={styles.cardTitle}>{title}</p>
+              <p className={styles.cardDesc}>{description}</p>
+            </div>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
+              flexDirection: "row",
               gap: "0.25rem",
             }}
           >
@@ -84,6 +89,6 @@ Card.propTypes = {
   status: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
   setEventAction: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };

@@ -73,17 +73,11 @@ export default function Dashboard() {
               </li>
             </ul>
           </div>
-          <ul>
-            {user ? (
-              <button type="button" onClick={handleLogOut}>
-                Log out
-              </button>
-            ) : (
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
-            )}
-          </ul>
+          <div>
+            <button type="button" onClick={handleLogOut}>
+              Log out
+            </button>
+          </div>
         </nav>
       </aside>
       <div>

@@ -11,7 +11,6 @@ export default function Events() {
   const [events, setEvents] = useState();
 
   const { eventAction, setEventAction } = useOutletContext();
-
   useEffect(() => {
     const getEvents = async () => {
       try {

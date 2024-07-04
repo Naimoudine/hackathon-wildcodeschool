@@ -1,6 +1,6 @@
 .card {
   width: 350px;
-  height: 250px;
+  height: 350px;
   border: 2px solid black;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -9,6 +9,12 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+}
+
+.card > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .cardImg {
@@ -21,13 +27,11 @@
 
 .cardTitle {
   margin-bottom: 0.25rem;
-  text-align: start;
   color: purple;
 }
 
 .cardDesc {
   margin-bottom: 0.5rem;
-  text-align: start;
   font-size: 0.825rem;
 }
 

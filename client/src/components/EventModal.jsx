@@ -72,6 +72,6 @@ EventModal.propTypes = {
     email: PropTypes.string,
     handicap: PropTypes.string,
     is_Admin: PropTypes.bool,
-  }).isRequired,
+  }),
   setEventAction: PropTypes.func.isRequired,
 };

@@ -6,5 +6,5 @@ export default function PendingEventCollection({ children }) {
 }
 
 PendingEventCollection.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
 };

@@ -6,5 +6,5 @@ export default function EventCollection({ children }) {
 }
 
 EventCollection.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
 };
