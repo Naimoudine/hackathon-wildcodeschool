@@ -8,40 +8,6 @@
   margin-bottom: 1.5rem;
 }
 
-.card {
-  max-width: 350px;
-  border: 2px solid black;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  text-align: center;
-}
-
-.cardImg {
-  height: 180px;
-  width: 100%;
-  background-color: red;
-  border-radius: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.cardTitle {
-  margin-bottom: 0.25rem;
-  border-bottom: 2px solid purple;
-  text-align: start;
-}
-
-.cardDesc {
-  margin-bottom: 0.5rem;
-  text-align: start;
-  font-size: 0.825rem;
-}
-
-.cardBtn {
-  background-color: purple;
-  color: white;
-  border-radius: 0.5rem;
-}
-
 .active {
   background-color: purple;
   color: white;

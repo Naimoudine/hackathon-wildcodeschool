@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +6,7 @@ import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
   const [showNav, setShowNav] = useState(false);
+  const [user, setUser] = useState();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,23 +19,49 @@ export default function Dashboard() {
   const handleLogOut = () => {
     navigate("/login", { state: "" });
   };
+
+  useEffect(() => {
+    setUser(location.state.user);
+  }, [location.state]);
+
   return (
     <main className={styles.dashboard}>
       <aside>
         <nav>
           <div>
-            <NavLink to="/dashboard">Logo</NavLink>
+            <NavLink
+              to={{
+                pathname: "/dashboard/users",
+              }}
+              state={{ user }}
+            >
+              Logo
+            </NavLink>
             <ul>
               <li>
-                <NavLink to="/dashboard">Events</NavLink>
+                <NavLink
+                  to={{
+                    pathname: "/dashboard/",
+                  }}
+                  state={{ user }}
+                >
+                  Events
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/users">Users</NavLink>
+                <NavLink
+                  to={{
+                    pathname: "/dashboard/users",
+                  }}
+                  state={{ user }}
+                >
+                  Users
+                </NavLink>
               </li>
             </ul>
           </div>
           <ul>
-            {location.state.user ? (
+            {user ? (
               <button type="button" onClick={handleLogOut}>
                 Log out
               </button>
@@ -84,7 +111,7 @@ export default function Dashboard() {
             </ul>
           </nav>
         </header>
-        <Outlet />
+        <Outlet context={{ user, setUser }} />
       </div>
     </main>
   );

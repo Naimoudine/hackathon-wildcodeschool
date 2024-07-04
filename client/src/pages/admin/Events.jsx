@@ -2,6 +2,7 @@ import { useState } from "react";
 import EventCollection from "../../components/EventCollection";
 import PendingEventCollection from "../../components/PendingEventCollection";
 import styles from "./Events.module.css";
+import Card from "../../components/Card";
 
 export default function Events() {
   const [showPending, setShowPending] = useState(false);
@@ -28,46 +29,11 @@ export default function Events() {
       <div>
         {!showPending ? (
           <EventCollection>
-            <div className={styles.card}>
-              <div className={styles.cardImg} />
-              <div>
-                <p className={styles.cardTitle}>Titre</p>
-                <p className={styles.cardDesc}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                  debitis commodi sit voluptatum incidunt alias!
-                </p>
-              </div>
-              <button type="button" className={styles.cardBtn}>
-                Détails
-              </button>
-            </div>
+            <Card status="" />
           </EventCollection>
         ) : (
           <PendingEventCollection>
-            <div className={styles.card}>
-              <div className={styles.cardImg} />
-              <div>
-                <p className={styles.cardTitle}>Titre</p>
-                <p className={styles.cardDesc}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                  debitis commodi sit voluptatum incidunt alias!
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "0.25rem",
-                }}
-              >
-                <button type="button" className={styles.cardBtn}>
-                  approve
-                </button>
-                <button type="button" className={styles.cardBtn}>
-                  decline
-                </button>
-              </div>
-            </div>
+            <Card status="pending" />
           </PendingEventCollection>
         )}
       </div>
