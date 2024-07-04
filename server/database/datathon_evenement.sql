@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `datathon` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `datathon`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: datathon
+-- Host: 127.0.0.1
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -25,13 +23,13 @@ DROP TABLE IF EXISTS `evenement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `evenement` (
-  `Unnamed: 0` bigint DEFAULT NULL,
-  `titre` text,
-  `duration` text,
-  `contenue` text,
-  `description` text,
-  `theme` text,
-  `image` text
+  id int primary key not null,
+  title varchar(255),
+  duration varchar(50),
+  contenue text,
+  description text,
+  theme varchar(255),
+  image text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

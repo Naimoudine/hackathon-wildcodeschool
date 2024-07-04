@@ -36,11 +36,8 @@ export default function Card({
     <div>
       {status !== "pending" ? (
         <div className={styles.card}>
-          <div>
-            <div className={styles.cardImg} />
-            <p className={styles.cardTitle}>{title}</p>
-            <p className={styles.cardDesc}>{description}</p>
-          </div>
+          <p className={styles.cardTitle}>{title}</p>
+          <p className={styles.cardDesc}>{description}</p>
           <button type="button" className={styles.cardBtn}>
             Details
           </button>
@@ -48,11 +45,8 @@ export default function Card({
       ) : (
         <div className={styles.card}>
           <div>
-            <div className={styles.cardImg} />
-            <div>
-              <p className={styles.cardTitle}>{title}</p>
-              <p className={styles.cardDesc}>{description}</p>
-            </div>
+            <p className={styles.cardTitle}>{title}</p>
+            <p className={styles.cardDesc}>{description}</p>
           </div>
           <div
             style={{

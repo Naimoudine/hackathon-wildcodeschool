@@ -57,16 +57,18 @@ export default function Events() {
       <div className={styles.eventsContainer}>
         {!showPending ? (
           <EventCollection>
-            {events?.map((event) => (
-              <Card
-                key={event.id}
-                status=""
-                title={event.title}
-                description={event.description}
-                date={event.date}
-                id={event.id}
-              />
-            ))}
+            {events
+              ?.filter((event) => event.is_validated === 1)
+              .map((event) => (
+                <Card
+                  key={event.id}
+                  status=""
+                  title={event.title}
+                  description={event.description}
+                  date={event.date}
+                  id={event.id}
+                />
+              ))}
           </EventCollection>
         ) : (
           <PendingEventCollection>
