@@ -1,13 +1,18 @@
 .card {
-  max-width: 350px;
+  width: 350px;
+  height: 250px;
   border: 2px solid black;
   padding: 0.5rem;
   border-radius: 1rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .cardImg {
-  height: 180px;
+  height: 150px;
   width: 100%;
   background-color: red;
   border-radius: 1rem;
@@ -16,8 +21,8 @@
 
 .cardTitle {
   margin-bottom: 0.25rem;
-  border-bottom: 2px solid purple;
   text-align: start;
+  color: purple;
 }
 
 .cardDesc {
@@ -27,9 +32,12 @@
 }
 
 .cardBtn {
+  display: inline-block;
   background-color: purple;
+  width: fit-content;
   color: white;
   border-radius: 0.5rem;
+  align-self: center;
 }
 
 .active {

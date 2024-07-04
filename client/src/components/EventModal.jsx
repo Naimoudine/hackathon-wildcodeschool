@@ -5,7 +5,12 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./EventModal.module.css";
 
-export default function EventModal({ showModal, setShowModal, user }) {
+export default function EventModal({
+  showModal,
+  setShowModal,
+  user,
+  setEventAction,
+}) {
   const formRef = useRef();
   const navigate = useNavigate();
 
@@ -25,6 +30,7 @@ export default function EventModal({ showModal, setShowModal, user }) {
       if (res.status === 201) {
         navigate("/dashboard", { state: user });
         setShowModal(false);
+        setEventAction(true);
       }
     } catch (error) {
       console.error(error);
@@ -67,4 +73,5 @@ EventModal.propTypes = {
     handicap: PropTypes.string,
     is_Admin: PropTypes.bool,
   }).isRequired,
+  setEventAction: PropTypes.func.isRequired,
 };

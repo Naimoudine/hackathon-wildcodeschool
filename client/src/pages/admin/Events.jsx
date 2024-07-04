@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import EventCollection from "../../components/EventCollection";
 import PendingEventCollection from "../../components/PendingEventCollection";
@@ -8,6 +8,24 @@ import Card from "../../components/Card";
 export default function Events() {
   const [showPending, setShowPending] = useState(false);
   const { setShowModal } = useOutletContext();
+  const [events, setEvents] = useState();
+
+  const { eventAction, setEventAction } = useOutletContext();
+
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events`);
+        if (res.status === 200) {
+          const data = await res.json();
+          setEvents(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getEvents();
+  }, [eventAction]);
 
   return (
     <div className={styles.events}>
@@ -37,14 +55,35 @@ export default function Events() {
           Créer évènement
         </button>
       </div>
-      <div>
+      <div className={styles.eventsContainer}>
         {!showPending ? (
           <EventCollection>
-            <Card status="" />
+            {events?.map((event) => (
+              <Card
+                key={event.id}
+                status=""
+                title={event.title}
+                description={event.description}
+                date={event.date}
+                id={event.id}
+              />
+            ))}
           </EventCollection>
         ) : (
           <PendingEventCollection>
-            <Card status="pending" />
+            {events
+              ?.filter((event) => event.is_validated === null)
+              .map((event) => (
+                <Card
+                  key={event.id}
+                  status="pending"
+                  title={event.title}
+                  description={event.description}
+                  date={event.date}
+                  id={event.id}
+                  setEventAction={setEventAction}
+                />
+              ))}
           </PendingEventCollection>
         )}
       </div>

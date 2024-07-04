@@ -1,0 +1,6 @@
+.eventCollection {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}

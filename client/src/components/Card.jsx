@@ -1,14 +1,19 @@
 import PropTypes from "prop-types";
 import styles from "./Card.module.css";
 
-export default function Card({ status }) {
+export default function Card({
+  status,
+  title,
+  description,
+  id,
+  setEventAction,
+}) {
   const handleCardValidation = async (e) => {
     const action = e.target.innerText;
-    const id = Number(e.target.id);
-
+    const eventId = Number(e.target.id);
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/events/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/events/${eventId}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -18,7 +23,7 @@ export default function Card({ status }) {
         }
       );
       if (res.status === 204) {
-        window.location.reload();
+        setEventAction(true);
       } else {
         console.info(res);
       }
@@ -31,13 +36,9 @@ export default function Card({ status }) {
     <div>
       {status !== "pending" ? (
         <div className={styles.card}>
-          <div className={styles.cardImg} />
           <div>
-            <p className={styles.cardTitle}>Titre</p>
-            <p className={styles.cardDesc}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-              debitis commodi sit voluptatum incidunt alias!
-            </p>
+            <p className={styles.cardTitle}>{title}</p>
+            <p className={styles.cardDesc}>{description}</p>
           </div>
           <button type="button" className={styles.cardBtn}>
             Détails
@@ -45,13 +46,9 @@ export default function Card({ status }) {
         </div>
       ) : (
         <div className={styles.card}>
-          <div className={styles.cardImg} />
           <div>
-            <p className={styles.cardTitle}>Titre</p>
-            <p className={styles.cardDesc}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-              debitis commodi sit voluptatum incidunt alias!
-            </p>
+            <p className={styles.cardTitle}>{title}</p>
+            <p className={styles.cardDesc}>{description}</p>
           </div>
           <div
             style={{
@@ -64,7 +61,7 @@ export default function Card({ status }) {
               type="button"
               className={styles.cardBtn}
               onClick={(e) => handleCardValidation(e)}
-              id="1"
+              id={id}
             >
               accepter
             </button>
@@ -72,7 +69,7 @@ export default function Card({ status }) {
               type="button"
               className={styles.cardBtn}
               onClick={(e) => handleCardValidation(e)}
-              id="1"
+              id={id}
             >
               décliner
             </button>
@@ -85,4 +82,8 @@ export default function Card({ status }) {
 
 Card.propTypes = {
   status: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  setEventAction: PropTypes.func.isRequired,
 };

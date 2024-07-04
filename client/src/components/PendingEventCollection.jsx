@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import styles from "./PendingEventCollection.module.css";
 
 export default function PendingEventCollection({ children }) {
-  return <div>{children}</div>;
+  return <div className={styles.collection}>{children}</div>;
 }
 
 PendingEventCollection.propTypes = {

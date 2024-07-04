@@ -1,3 +1,7 @@
+.events {
+  overflow: hidden;
+}
+
 .events h1 {
   margin-bottom: 0.5rem;
 }

@@ -83,5 +83,6 @@
 .dashboard > div {
   min-height: 100dvh;
   width: 100%;
+  overflow: scroll;
   padding: 1rem;
 }

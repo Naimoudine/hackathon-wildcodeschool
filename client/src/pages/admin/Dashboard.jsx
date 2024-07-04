@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [showNav, setShowNav] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState();
+  const [eventAction, setEventAction] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,12 +28,19 @@ export default function Dashboard() {
     setUser(location.state.user);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setEventAction(false);
+    }, 1000);
+  }, [eventAction]);
+
   return (
     <main className={styles.dashboard}>
       <EventModal
         showModal={showModal}
         setShowModal={setShowModal}
         user={user}
+        setEventAction={setEventAction}
       />
       <aside>
         <nav>
@@ -116,7 +124,16 @@ export default function Dashboard() {
             </ul>
           </nav>
         </header>
-        <Outlet context={{ user, setUser, showModal, setShowModal }} />
+        <Outlet
+          context={{
+            user,
+            setUser,
+            showModal,
+            setShowModal,
+            eventAction,
+            setEventAction,
+          }}
+        />
       </div>
     </main>
   );
