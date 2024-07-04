@@ -1,3 +1,9 @@
+.loginMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loginSection {
   width: 100%;
   max-width: 420px;
@@ -6,7 +12,6 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .formLogin {
@@ -15,6 +20,11 @@
   justify-content: space-evenly;
   flex-grow: 1;
   padding-bottom: 1rem;
+}
+
+.formLogin > div {
+  display: flex;
+  flex-direction: column;
 }
 
 /* a,
@@ -29,8 +39,14 @@ textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
-  border: none;
+  border: 1px solid purple;
+  border-radius: 0.5rem;
   outline: none;
+}
+
+.formLogin label {
+  color: purple;
+  margin-bottom: 0.25rem;
 }
 
 label,
@@ -40,15 +56,18 @@ label,
 
 .loginSubmitButton {
   padding: 0.5rem;
-  background-color: #00a3ff;
+  background-color: purple;
+  color: white;
+  font-size: 0.825rem;
+  border-radius: 0.5rem;
 }
 
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
-  background: #000;
+  background: purple;
   color: #fff;
-  padding: 0.25rem;
+  padding: 0.5rem;
   position: relative;
   bottom: -10px;
 }

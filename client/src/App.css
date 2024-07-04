@@ -13,12 +13,17 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   background-position-x: right;
+}
+
+main {
+  height: 100dvh;
 }
 
 button {
   padding: 0.5rem 1rem;
   border: none;
   outline: none;
+  cursor: pointer;
 }

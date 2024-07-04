@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   faCheck,
   faTimes,
   faInfoCircle,
-  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./login.module.css";
@@ -26,6 +26,8 @@ function Login() {
 
   const [errMsg, setErrMsg] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     emailRef.current.focus();
   }, []);
@@ -44,10 +46,32 @@ function Login() {
     );
   }, [email, pwd]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: emailRef.current.value,
+        }),
+      });
+      if (res.status === 200) {
+        const data = await res.json();
+        if (data.user.is_admin) {
+          navigate("/dashboard", { state: data });
+        } else {
+          navigate("/", { state: data });
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <main className={styles.loginMain}>
-      <FontAwesomeIcon icon={faArrowLeft} />{" "}
-      <section className={styles.loginSection}>
+      <div className={styles.loginSection}>
         <p
           ref={errRef}
           className={
@@ -56,7 +80,7 @@ function Login() {
         >
           {errMsg}
         </p>
-        <form className={styles.formLogin}>
+        <form className={styles.formLogin} onSubmit={(e) => handleSubmit(e)}>
           <div>
             <label htmlFor="email">
               Email
@@ -131,7 +155,7 @@ function Login() {
             Login
           </button>
         </form>
-      </section>
+      </div>
     </main>
   );
 }

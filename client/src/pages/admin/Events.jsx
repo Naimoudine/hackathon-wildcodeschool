@@ -1,138 +1,75 @@
+import { useState } from "react";
 import EventCollection from "../../components/EventCollection";
 import PendingEventCollection from "../../components/PendingEventCollection";
 import styles from "./Events.module.css";
 
 export default function Events() {
+  const [showPending, setShowPending] = useState(false);
+
   return (
     <div className={styles.events}>
       <h1>Events</h1>
       <div className={styles.cta}>
-        <button type="button">All</button>
-        <button type="button">Pending</button>
+        <button
+          type="button"
+          className={!showPending ? styles.active : ""}
+          onClick={() => setShowPending(false)}
+        >
+          Tout
+        </button>
+        <button
+          type="button"
+          className={showPending ? styles.active : ""}
+          onClick={() => setShowPending(true)}
+        >
+          En attente
+        </button>
       </div>
       <div>
-        <EventCollection>
-          <div
-            style={{
-              maxWidth: "350px",
-              border: "2px solid black",
-              padding: "0.5rem",
-              borderRadius: "1rem",
-              textAlign: "center",
-              display: "none",
-            }}
-          >
-            <div
-              style={{
-                height: "180px",
-                width: "100%",
-                backgroundColor: "red",
-                borderRadius: "1rem",
-                marginBottom: "0.25rem",
-              }}
-            />
-            <div>
-              <p
-                style={{
-                  marginBottom: "0.25rem",
-                  borderBottom: "2px solid purple",
-                  textAlign: "start",
-                }}
-              >
-                Titre
-              </p>
-              <p
-                style={{
-                  marginBottom: "0.5rem",
-                  textAlign: "start",
-                  fontSize: "0.825rem",
-                }}
-              >
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                debitis commodi sit voluptatum incidunt alias!
-              </p>
-            </div>
-            <button
-              type="button"
-              style={{
-                display: "inline-block",
-                margin: "0 auto",
-                borderRadius: "0.5rem",
-                color: "white",
-                backgroundColor: "purple",
-              }}
-            >
-              Détails
-            </button>
-          </div>
-        </EventCollection>
-        <PendingEventCollection>
-          <div
-            style={{
-              maxWidth: "350px",
-              border: "2px solid black",
-              padding: "0.5rem",
-              borderRadius: "1rem",
-            }}
-          >
-            <div
-              style={{
-                height: "180px",
-                width: "100%",
-                backgroundColor: "red",
-                borderRadius: "1rem",
-                marginBottom: "0.25rem",
-              }}
-            />
-            <div>
-              <p
-                style={{
-                  marginBottom: "0.25rem",
-                  borderBottom: "2px solid purple",
-                }}
-              >
-                Titre
-              </p>
-              <p
-                style={{
-                  marginBottom: "0.5rem",
-                  fontSize: "0.825rem",
-                }}
-              >
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                debitis commodi sit voluptatum incidunt alias!
-              </p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "0.25rem",
-              }}
-            >
-              <button
-                type="button"
-                style={{
-                  borderRadius: "0.5rem",
-                  color: "white",
-                  backgroundColor: "purple",
-                }}
-              >
-                approve
-              </button>
-              <button
-                type="button"
-                style={{
-                  borderRadius: "0.5rem",
-                  color: "white",
-                  backgroundColor: "purple",
-                }}
-              >
-                decline
+        {!showPending ? (
+          <EventCollection>
+            <div className={styles.card}>
+              <div className={styles.cardImg} />
+              <div>
+                <p className={styles.cardTitle}>Titre</p>
+                <p className={styles.cardDesc}>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
+                  debitis commodi sit voluptatum incidunt alias!
+                </p>
+              </div>
+              <button type="button" className={styles.cardBtn}>
+                Détails
               </button>
             </div>
-          </div>
-        </PendingEventCollection>
+          </EventCollection>
+        ) : (
+          <PendingEventCollection>
+            <div className={styles.card}>
+              <div className={styles.cardImg} />
+              <div>
+                <p className={styles.cardTitle}>Titre</p>
+                <p className={styles.cardDesc}>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
+                  debitis commodi sit voluptatum incidunt alias!
+                </p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "0.25rem",
+                }}
+              >
+                <button type="button" className={styles.cardBtn}>
+                  approve
+                </button>
+                <button type="button" className={styles.cardBtn}>
+                  decline
+                </button>
+              </div>
+            </div>
+          </PendingEventCollection>
+        )}
       </div>
     </div>
   );
