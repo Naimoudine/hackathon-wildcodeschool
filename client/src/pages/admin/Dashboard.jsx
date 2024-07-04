@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EventModal from "../../components/EventModal";
 import styles from "./Dashboard.module.css";
+import logo from "../../assets/images/logo.png";
 
 export default function Dashboard() {
   const [showNav, setShowNav] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState();
 
   const location = useLocation();
@@ -22,21 +25,23 @@ export default function Dashboard() {
 
   useEffect(() => {
     setUser(location.state.user);
-  }, [location.state]);
+  }, []);
 
   return (
     <main className={styles.dashboard}>
+      <EventModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        user={user}
+      />
       <aside>
         <nav>
           <div>
-            <NavLink
-              to={{
-                pathname: "/dashboard/users",
-              }}
-              state={{ user }}
-            >
-              Logo
-            </NavLink>
+            <img
+              src={logo}
+              style={{ height: "auto", width: "50px" }}
+              alt="logo"
+            />
             <ul>
               <li>
                 <NavLink
@@ -111,7 +116,7 @@ export default function Dashboard() {
             </ul>
           </nav>
         </header>
-        <Outlet context={{ user, setUser }} />
+        <Outlet context={{ user, setUser, showModal, setShowModal }} />
       </div>
     </main>
   );

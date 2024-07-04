@@ -4,8 +4,15 @@
 
 .cta {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1.5rem;
+}
+
+.cta > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .active {

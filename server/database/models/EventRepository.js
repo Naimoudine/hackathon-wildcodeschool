@@ -28,14 +28,8 @@ class EventRepository extends AbstractRepository {
 
   async create(event) {
     const [rows] = await this.database.query(
-      `insert into ${this.table} (title, description, calendar, user_id, is_validated) values (?, ?, ?, ?, ?)`,
-      [
-        event.title,
-        event.description,
-        event.calendar,
-        event.userId,
-        event.isValidated,
-      ]
+      `insert into ${this.table} (title, description, calendar, user_id) values (?, ?, ?, ?)`,
+      [event.title, event.description, event.calendar, event.userId]
     );
     return rows.insertId;
   }
