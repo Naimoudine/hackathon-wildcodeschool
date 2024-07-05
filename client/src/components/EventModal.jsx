@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./EventModal.module.css";
@@ -31,6 +30,9 @@ export default function EventModal({
         navigate("/dashboard", { state: user });
         setShowModal(false);
         setEventAction(true);
+        formRef.current.title.value = "";
+        formRef.current.description.value = "";
+        formRef.current.calendar.value = "";
       }
     } catch (error) {
       console.error(error);
@@ -61,17 +63,3 @@ export default function EventModal({
     </div>
   );
 }
-
-EventModal.propTypes = {
-  showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    firstname: PropTypes.string,
-    lastname: PropTypes.string,
-    email: PropTypes.string,
-    handicap: PropTypes.string,
-    is_Admin: PropTypes.bool,
-  }),
-  setEventAction: PropTypes.func.isRequired,
-};

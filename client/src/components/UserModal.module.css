@@ -1,4 +1,4 @@
-.eventModal {
+.userModal {
   position: absolute;
   top: 0;
   width: 0;
@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-.eventModal form {
+.userModal form {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -19,17 +19,18 @@
   gap: 0.5rem;
   padding: 1rem;
   position: relative;
-  width: 350px;
+  width: 400px;
+  min-width: 350px;
 }
 
-.eventModal svg {
+.userModal svg {
   position: absolute;
   top: 0.25rem;
   right: 0.5rem;
   cursor: pointer;
 }
 
-.eventModal label {
+.userModal label {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -37,26 +38,23 @@
   color: #5c0099;
 }
 
-.eventModal input[type="text"],
+.userModal input[type="text"],
 textarea,
 button {
   border: 2px solid #5c0099;
 }
 
-.eventModal textarea {
-  resize: none;
-  padding: 0.25rem;
-  font-size: 0.825rem;
-  height: 100px;
+.userModal select {
+  padding: 0.5rem;
 }
 
-.eventModal button {
+.userModal button {
   border-radius: 0.25rem;
   background: #fff;
   color: #5c0099;
 }
 
-.eventModal button:hover {
+.userModal button:hover {
   background: #5c0099;
   color: #fff;
 }

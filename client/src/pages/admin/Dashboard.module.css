@@ -13,14 +13,14 @@
 
 .dashboard aside {
   width: 15%;
-  background-color: purple;
+  background-color: #5c0099;
   display: none;
 }
 
 @media screen and (min-width: 1025px) {
   .dashboard aside {
     width: 15%;
-    background-color: purple;
+    background-color: #5c0099;
     display: block;
   }
 }
@@ -61,8 +61,29 @@
   width: 100%;
 }
 
+.mobilNav nav {
+  margin-top: 0.5rem;
+}
+
 .mobilNav > nav li {
   padding: 0.25rem;
+  cursor: pointer;
+}
+
+.mobilNav > nav li:hover {
+  background: #5c0099;
+}
+
+.mobilNav > nav > ul > li > a:hover {
+  color: #fff;
+}
+
+.mobilNav > nav > ul > li > a {
+  display: inline-block;
+  width: 100%;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #000;
 }
 
 .dashboard nav > div > ul {
@@ -76,7 +97,7 @@
 }
 
 .dashboard a {
-  color: black;
+  color: #fff;
   text-decoration: none;
 }
 

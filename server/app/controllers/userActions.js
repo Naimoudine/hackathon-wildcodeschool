@@ -34,16 +34,41 @@ const read = async (req, res, next) => {
   }
 };
 
+const add = async (req, res, next) => {
+  const user = req.body;
+  try {
+    const insertId = await tables.user.create(user);
+    if (!user) {
+      res.sendStatus(422);
+      return;
+    }
+    res.status(201).json({ insertId });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
+const destroy = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await tables.user.delete(id);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
+  add,
   // edit,
-  // destroy,
+  destroy,
 };

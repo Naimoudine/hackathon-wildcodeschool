@@ -4,13 +4,16 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EventModal from "../../components/EventModal";
 import styles from "./Dashboard.module.css";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logoWithOutStrok.png";
+import UserModal from "../../components/UserModal";
 
 export default function Dashboard() {
   const [showNav, setShowNav] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showUserModal, setShowUserModal] = useState(false);
   const [user, setUser] = useState();
   const [eventAction, setEventAction] = useState(false);
+  const [userAction, setUserAction] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,6 +25,7 @@ export default function Dashboard() {
 
   const handleLogOut = () => {
     navigate("/login", { state: "" });
+    setShowNav(false);
   };
 
   useEffect(() => {
@@ -36,6 +40,12 @@ export default function Dashboard() {
 
   return (
     <main className={styles.dashboard}>
+      <UserModal
+        setShowUserModal={setShowUserModal}
+        showUserModal={showUserModal}
+        user={user}
+        setUserAction={setUserAction}
+      />
       <EventModal
         showModal={showModal}
         setShowModal={setShowModal}
@@ -58,7 +68,7 @@ export default function Dashboard() {
                   }}
                   state={{ user }}
                 >
-                  Events
+                  Evenements
                 </NavLink>
               </li>
               <li>
@@ -68,7 +78,7 @@ export default function Dashboard() {
                   }}
                   state={{ user }}
                 >
-                  Users
+                  Utilisateurs
                 </NavLink>
               </li>
             </ul>
@@ -83,11 +93,12 @@ export default function Dashboard() {
       <div>
         <header className={styles.mobilNav}>
           <div>
+            <img
+              src={logo}
+              style={{ height: "auto", width: "25px" }}
+              alt="logo"
+            />
             <FontAwesomeIcon icon={faBars} onClick={() => handleNav()} />
-            <div>
-              <span>username</span>
-              <img src="" alt="" />
-            </div>
           </div>
           <nav
             style={
@@ -96,13 +107,14 @@ export default function Dashboard() {
                     backgroundColor: "lightgray",
                     width: "100%",
                     transition: "ease-in-out",
-                    transitionDelay: "250ms",
+                    transitionDuration: "100ms",
                     transform: "translateX(0%)",
                     position: "relative",
                   }
                 : {
                     backgroundColor: "lightgray",
                     width: "100%",
+                    transition: "ease-in-out",
                     transform: "translateX(-200%)",
                     position: "absolute",
                   }
@@ -110,12 +122,38 @@ export default function Dashboard() {
           >
             <ul>
               <li>
-                <NavLink to="/dashboard">Events</NavLink>
+                <NavLink
+                  to="/dashboard"
+                  state={{ user }}
+                  onClick={() => setShowNav(false)}
+                >
+                  Events
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/users">Users</NavLink>
+                <NavLink
+                  to="/dashboard/users"
+                  state={{ user }}
+                  onClick={() => setShowNav(false)}
+                >
+                  Users
+                </NavLink>
               </li>
             </ul>
+            <button
+              type="button"
+              style={{
+                border: "none",
+                width: "100%",
+                textAlign: "start",
+                backgroundColor: "#5c0099",
+                color: "#fff",
+                fontSize: "22px",
+              }}
+              onClick={handleLogOut}
+            >
+              Log out
+            </button>
           </nav>
         </header>
         <Outlet
@@ -126,6 +164,10 @@ export default function Dashboard() {
             setShowModal,
             eventAction,
             setEventAction,
+            showUserModal,
+            setShowUserModal,
+            userAction,
+            setUserAction,
           }}
         />
       </div>

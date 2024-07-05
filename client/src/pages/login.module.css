@@ -39,13 +39,13 @@ textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
-  border: 1px solid purple;
+  border: 1px solid #5c0099;
   border-radius: 0.5rem;
   outline: none;
 }
 
 .formLogin label {
-  color: purple;
+  color: #5c0099;
   margin-bottom: 0.25rem;
 }
 
@@ -56,7 +56,7 @@ label,
 
 .loginSubmitButton {
   padding: 0.5rem;
-  background-color: purple;
+  background-color: #5c0099;
   color: white;
   font-size: 0.825rem;
   border-radius: 0.5rem;
@@ -65,7 +65,7 @@ label,
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
-  background: purple;
+  background: #5c0099;
   color: #fff;
   padding: 0.5rem;
   position: relative;

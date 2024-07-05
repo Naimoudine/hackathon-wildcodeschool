@@ -1,0 +1,39 @@
+.cta {
+  margin-bottom: 2rem;
+}
+
+.usersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.usersContainer h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border: 2px solid black;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card div:last-of-type {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.card button:hover {
+  background-color: #5c0099;
+}
+
+.card button:hover > svg {
+  color: #fff;
+}

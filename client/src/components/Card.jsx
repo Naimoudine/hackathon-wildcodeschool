@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styles from "./Card.module.css";
 
 export default function Card({
@@ -39,7 +38,7 @@ export default function Card({
           <p className={styles.cardTitle}>{title}</p>
           <p className={styles.cardDesc}>{description}</p>
           <button type="button" className={styles.cardBtn}>
-            Details
+            Détails
           </button>
         </div>
       ) : (
@@ -78,11 +77,3 @@ export default function Card({
     </div>
   );
 }
-
-Card.propTypes = {
-  status: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  setEventAction: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-};

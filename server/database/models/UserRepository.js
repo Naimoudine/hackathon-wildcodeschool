@@ -9,6 +9,14 @@ class UserRepository extends AbstractRepository {
 
   // The Rs of CRUD - Read operations
 
+  async create(user) {
+    const [rows] = await this.database.query(
+      `insert into ${this.table} (firstname, lastname, email, handicap, is_admin) values (?, ?, ?, ?, ?)`,
+      [user.firstname, user.lastname, user.email, user.handicap, user.isAdmin]
+    );
+    return rows.insertId;
+  }
+
   async readByEmail(email) {
     const [rows] = await this.database.query(
       `select * from ${this.table} where email = ?`,
@@ -33,6 +41,14 @@ class UserRepository extends AbstractRepository {
     const [rows] = await this.database.query(`select * from ${this.table}`);
 
     // Return the array of items
+    return rows;
+  }
+
+  async delete(id) {
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
     return rows;
   }
 }
